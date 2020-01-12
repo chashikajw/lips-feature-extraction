@@ -6,6 +6,7 @@ import dlib
 import imutils
 import csv
 import os
+import math
 
 facial_features_cordinates = {}
 
@@ -50,6 +51,12 @@ def generateMouthParameters(mouth_cordinates):
     mouth_paramaters["h1"] = abs((mouth_cordinates[19]+ mouth_cordinates[10]) - (mouth_cordinates[2]+ mouth_cordinates[13]))/2  #(68+59)/2 - (51 + 62)/2  
     mouth_paramaters["h2"] = abs((mouth_cordinates[17]+ mouth_cordinates[8]) - (mouth_cordinates[4]+ mouth_cordinates[15]))/2  #(66+57)/2 - (53+64)/2 
 
+    #updae values as one value
+    mouth_paramaters["w"] = math.sqrt(mouth_paramaters["w"][0]**2 + mouth_paramaters["w"][1]**2)
+    mouth_paramaters["h0"] = math.sqrt(mouth_paramaters["h0"][0]**2 + mouth_paramaters["h0"][1]**2)
+    mouth_paramaters["h1"] = math.sqrt(mouth_paramaters["h1"][0]**2 + mouth_paramaters["h1"][1]**2)
+    mouth_paramaters["h2"] = math.sqrt(mouth_paramaters["h2"][0]**2 + mouth_paramaters["h2"][1]**2)
+   
     return mouth_paramaters
 
 # 0  1   2  3  4  5  6 7  8  9  10 11 12 13 14 15 16 17 18 19
@@ -98,7 +105,7 @@ def visualize_facial_landmarks(image, shape, colors=None, alpha=0.75):
     # return the output image
     print(facial_features_cordinates)
     print("*********only mouth*************")
-    print(facial_features_cordinates["Mouth"][0])
+    print(facial_features_cordinates["Mouth"][0][0])
     parameters = generateMouthParameters(facial_features_cordinates["Mouth"])
     #return output
     return parameters
