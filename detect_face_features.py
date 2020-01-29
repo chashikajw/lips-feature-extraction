@@ -21,13 +21,7 @@ FACIAL_LANDMARKS_INDEXES = OrderedDict([
     ("Jaw", (0, 17))
 ])
 
-#construct the argument parser and parse the arguments
-# ap = argparse.ArgumentParser()
-# ap.add_argument("-p", "--shape-predictor", required=True,
-# 	help="path to facial landmark predictor")
-# ap.add_argument("-i", "--image", required=True,
-# 	help="path to input image")
-# args = vars(ap.parse_args())
+
 
 
 shapepredictorPara = "shape_predictor_68_face_landmarks.dat"
@@ -117,7 +111,7 @@ detector = dlib.get_frontal_face_detector()
 predictor = dlib.shape_predictor(shapepredictorPara)
 
 
-
+# include the images directory
 directory = os.fsencode("vowels")
 
 with open('mouth_parameters.csv', mode='w+') as csv_file:
