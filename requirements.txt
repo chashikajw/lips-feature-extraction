@@ -5,5 +5,5 @@ Cython==0.25.2
 dlib==19.4.0
 numpy==1.13.1
 numpydoc==0.6.0
-opencv-python==3.2.0.8
+opencv-python==3.4.7.28
 Pillow==6.2.0
